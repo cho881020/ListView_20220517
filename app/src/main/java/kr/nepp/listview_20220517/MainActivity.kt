@@ -48,8 +48,15 @@ class MainActivity : AppCompatActivity() {
         studentListView.setOnItemLongClickListener { adapterView, view, position, l ->
 
             val student = mStudentList[position]
+            
+//            학생 목록에서, 길게 눌린 학생은 제거.
+            
+            mStudentList.remove(student)
 
-            Toast.makeText(this, "${student.name} 길게 클릭 됨", Toast.LENGTH_SHORT).show()
+//            어댑터의 변경 사항 감지 처리
+            mAdapter.notifyDataSetChanged()
+
+            Toast.makeText(this, "${student.name} 학생이 삭제 됨", Toast.LENGTH_SHORT).show()
 
             return@setOnItemLongClickListener true
 
