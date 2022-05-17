@@ -42,7 +42,7 @@ class StudentAdapter(
         txtName.text = data.name
         txtAddress.text = data.address
 
-        txtAge.text = "${2022 - data.birthYear + 1}세"
+        txtAge.text = "${data.getKoreanAge()}세"
 
 
 //        만들어진 row의 그림이 리스트뷰에 뿌려짐.
