@@ -2,6 +2,7 @@ package kr.nepp.listview_20220517
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
 import kr.nepp.listview_20220517.adapters.StudentAdapter
 import kr.nepp.listview_20220517.datas.StudentData
@@ -32,6 +33,27 @@ class MainActivity : AppCompatActivity() {
         mAdapter = StudentAdapter( this, R.layout.student_list_item, mStudentList )
 
         studentListView.adapter = mAdapter
+
+        studentListView.setOnItemClickListener { adapterView, view, position, l ->
+
+//            클릭된 학생을 변수에 저장
+
+            val clickedStudent = mStudentList[position]
+
+
+            Toast.makeText(this, "${clickedStudent.name} 클릭 됨", Toast.LENGTH_SHORT).show()
+
+        }
+        
+        studentListView.setOnItemLongClickListener { adapterView, view, position, l ->
+
+            val student = mStudentList[position]
+
+            Toast.makeText(this, "${student.name} 길게 클릭 됨", Toast.LENGTH_SHORT).show()
+
+            return@setOnItemLongClickListener true
+
+        }
 
 
 
